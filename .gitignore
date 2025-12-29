@@ -1,0 +1,15 @@
+venv/
+env/
+.env
+
+__pycache__/
+*.py[cod]
+
+logs/
+!artifacts/data/*.dvc
+artifacts/models/*.joblib
+
+mlruns/
+mlflow.db
+
+.DS_Store
