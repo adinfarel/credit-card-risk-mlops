@@ -47,11 +47,12 @@ docker-compose up --build -d
 ## 📊 Monitoring
 
 The system exposes real-time metrics for Prometheus to track:
-* **Prediction Volume: Monitor the number of credit risk assessments processed.
-* **Inference Latency: Track how long the model takes to return a prediction.
-* **System Health: Ensure the FastAPI container is running optimally.
+* **Prediction Volume:** Monitor the number of credit risk assessments processed.
+* **Inference Latency:** Track how long the model takes to return a prediction.
+* **System Health:** Ensure the FastAPI container is running optimally.
 
-** 🛠 Manual Execution (Optional)
+## 🛠 Manual Execution (Optional)
+
 If you prefer to run the system without Docker for debugging:
 ```bash
 # Install dependencies
@@ -59,6 +60,3 @@ pip install -r requirements.txt
 
 # Run the API
 python app.py
-
-
-
