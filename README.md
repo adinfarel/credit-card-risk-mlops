@@ -32,7 +32,7 @@ Copy and paste the following commands to deploy the system:
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/adinfarel/credit-card-risk-mlops.git && cd your-repo-name
+git clone https://github.com/adinfarel/credit-card-risk-mlops.git && cd credit-card-risk-mlops
 
 # 2. Build and start the services (API & Monitoring)
 # This will handle the environment setup and model loading
