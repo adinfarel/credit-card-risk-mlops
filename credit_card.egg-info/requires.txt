@@ -1,4 +1,3 @@
-# Core libraries for data science and machine learning
 pandas
 numpy
 scikit-learn
@@ -8,26 +7,17 @@ joblib
 xgboost
 lightgbm
 imblearn
-
-# Version control and experiment tracking
 mlflow
 dvc
 dvc-gdrive
-
-# Deployment and API
 fastapi
 uvicorn
 python-multipart
 pydantic
 jinja2
-
-# Monitoring and Observability
 prometheus-client
 prometheus-fastapi-instrumentator
-
-# Utilities
 python-dotenv
 pyyaml
 python-box
 ensure
-

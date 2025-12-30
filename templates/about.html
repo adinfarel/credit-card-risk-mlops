@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block title %}Protocol Information{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-12 animate__animated animate__fadeIn">
+    
+    <div class="mb-12 border-b-2 border-slate-900 pb-6">
+        <h1 class="text-5xl font-black tracking-tighter text-slate-900 uppercase">
+            About <span class="text-blue-600">Us</span>
+        </h1>
+        <p class="text-slate-500 font-medium mt-2 tracking-widest uppercase text-xs">Technical Documentation & Architect Profile</p>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-10 items-stretch">
+        
+        <div class="bg-slate-900 p-10 rounded-3xl text-white flex flex-col justify-between">
+            <div>
+                <h2 class="text-3xl font-bold mb-6">THE MISSION</h2>
+                <div class="space-y-6 text-slate-300 leading-relaxed text-sm">
+                    <p>
+                        Website ini dirancang untuk melakukan analisis risiko finansial dengan tingkat presisi tinggi. Kami memproses variabel data mentah menjadi wawasan keputusan yang objektif.
+                    </p>
+                    <p>
+                        Fokus utama kami adalah memberikan transparansi pada setiap parameter kredit, memastikan setiap evaluasi didasarkan pada logika data yang kuat dan terukur.
+                    </p>
+                </div>
+            </div>
+            <div class="mt-10 pt-6 border-t border-slate-700">
+                <span class="text-blue-400 font-mono text-xs tracking-widest">Website V.1</span>
+            </div>
+        </div>
+
+        <div class="bg-white border-2 border-slate-900 p-10 rounded-3xl flex flex-col">
+            <h2 class="text-2xl font-black mb-8 text-slate-900 uppercase tracking-tight">Lead Developer</h2>
+            
+            <div class="flex-grow">
+                <div class="mb-8">
+                    <h3 class="text-4xl font-black text-slate-900 leading-none">ADIN RAMDAN FARELINO</h3>
+                    <p class="text-blue-600 font-bold mt-2 uppercase text-xs tracking-tighter">AI Engineer</p>
+                </div>
+
+                <div class="space-y-3">
+                    <a href="https://github.com/adinfarel" target="_blank" class="block w-full p-4 border-2 border-slate-900 text-slate-900 font-bold hover:bg-slate-900 hover:text-white transition-colors text-center uppercase tracking-tighter">
+                        Github Repository
+                    </a>
+                    
+                    <a href="https://www.linkedin.com/in/adin-ramdan-farelino-669b99370?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="block w-full p-4 border-2 border-slate-900 text-slate-900 font-bold hover:bg-blue-600 hover:border-blue-600 hover:text-white transition-colors text-center uppercase tracking-tighter">
+                        LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-10 p-4 bg-slate-50 border border-slate-200 rounded-xl">
+                <p class="text-[10px] text-slate-500 font-bold uppercase leading-tight">
+                    Bertanggung jawab atas arsitektur end-to-end, mulai dari pemrosesan data hingga visualisasi dashboard.
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-slate-50 border-2 border-slate-200 p-10 rounded-3xl flex flex-col">
+            <h2 class="text-2xl font-black mb-8 text-slate-900 uppercase tracking-tight">Technology</h2>
+            
+            <div class="space-y-6">
+                <div class="border-l-4 border-blue-600 pl-4">
+                    <h4 class="font-bold text-slate-900 text-lg uppercase">Backend</h4>
+                    <p class="text-sm text-slate-500 font-medium">FastAPI Engine</p>
+                </div>
+                <div class="border-l-4 border-blue-600 pl-4">
+                    <h4 class="font-bold text-slate-900 text-lg uppercase">Frontend</h4>
+                    <p class="text-sm text-slate-500 font-medium">Tailwind & Jinja2</p>
+                </div>
+                <div class="border-l-4 border-blue-600 pl-4">
+                    <h4 class="font-bold text-slate-900 text-lg uppercase">Intelligence</h4>
+                    <p class="text-sm text-slate-500 font-medium">Predictive Intelligence Unit</p>
+                </div>
+                <div class="border-l-4 border-blue-600 pl-4">
+                    <h4 class="font-bold text-slate-900 text-lg uppercase">Operations</h4>
+                    <p class="text-sm text-slate-500 font-medium">Docker Containerization</p>
+                </div>
+            </div>
+
+            <div class="mt-auto pt-10">
+                <p class="text-[10px] font-black text-slate-400 tracking-[0.3em] uppercase">Built for Performance</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

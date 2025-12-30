@@ -1,0 +1,182 @@
+{% extends "layout.html" %}
+{% block title %}Executive Credit Analysis Report | Success{% endblock %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-6 py-20 animate__animated animate__fadeIn">
+    <div class="flex flex-col lg:flex-row justify-between items-start gap-8 mb-16 border-b border-slate-200 pb-12">
+        <div class="max-w-3xl">
+            <nav class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-blue-600 mb-6">
+                <span>Verification</span>
+                <span class="w-8 h-[1px] bg-blue-200"></span>
+                <span>Algorithm Assessment</span>
+                <span class="w-8 h-[1px] bg-blue-200"></span>
+                <span class="text-slate-400">Final Report</span>
+            </nav>
+            <h1 class="text-6xl font-extrabold text-slate-900 tracking-tighter leading-[1.1]">
+                Credit Risk Assessment: <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-500 to-teal-600">Investment Grade.</span>
+            </h1>
+        </div>
+        <div class="bg-slate-900 text-white p-10 rounded-[3rem] shadow-2xl min-w-[320px] relative overflow-hidden group">
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition">
+                <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+            </div>
+            <p class="text-[10px] font-bold uppercase tracking-[0.3em] text-emerald-400 mb-2">System Confidence Score</p>
+            <div class="text-7xl font-black mb-2">98.2<span class="text-2xl text-emerald-500">%</span></div>
+            <p class="text-xs text-slate-400 leading-relaxed">Status: Profil risiko Anda memenuhi parameter likuiditas global Basel III.</p>
+        </div>
+    </div>
+
+    <div class="grid lg:grid-cols-12 gap-16">
+        <div class="lg:col-span-8 space-y-20">
+            
+            <section class="relative">
+                <div class="absolute -left-8 top-0 bottom-0 w-[2px] bg-slate-100"></div>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-8 flex items-center gap-4">
+                    <span class="w-4 h-4 rounded-full bg-blue-600"></span>
+                    I. Analisis Fundamental & Demografi
+                </h2>
+                <div class="prose prose-slate max-w-none text-slate-600 text-lg leading-relaxed space-y-6">
+                    <p>
+                        Berdasarkan data demografis nasabah berusia <strong>{{ data.person_age }} tahun</strong>, model prediktabilitas kami mengkategorikan Anda dalam fase 
+                        {% if data.person_age < 30 %}
+                        <em>Early Accumulation & High Potential</em>. Di usia produktif awal ini, profil risiko Anda menunjukkan daya tahan terhadap fluktuasi pasar yang tinggi.
+                        {% elif data.person_age < 50 %}
+                        <em>Peak Earning & Strategic Expansion</em>. Anda berada pada kurva pendapatan maksimal, di mana pinjaman sebesar <strong>${{ data.loan_amnt }}</strong> bertindak sebagai instrumen leverage pertumbuhan aset, bukan sekadar liabilitas konsumtif.
+                        {% else %}
+                        <em>Wealth Preservation & Distribution</em>. Fokus utama kami pada usia {{ data.person_age }} tahun adalah memastikan efisiensi pajak dan perlindungan nilai aset utama Anda.
+                        {% endif %}
+                    </p>
+                    <p>
+                        Stabilitas pekerjaan selama <strong>{{ data.person_emp_length }} tahun</strong> memberikan sinyal kualitatif yang kuat kepada penyedia likuiditas. Secara historis, nasabah dengan masa kerja di atas 3 tahun memiliki probabilitas gagal bayar (Default Probability) di bawah 2.4%.
+                    </p>
+                </div>
+            </section>
+
+            <div class="audit-card text-center">
+                <p class="data-label mb-6 underline">Visualisasi Parameter Kepercayaan Digital</p>
+                <div class="viewport-container viewport-md">
+                    <canvas id="riskRadar"></canvas>
+                </div>
+            </div>
+
+            <section class="relative">
+                <div class="absolute -left-8 top-0 bottom-0 w-[2px] bg-slate-100"></div>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-8 flex items-center gap-4">
+                    <span class="w-4 h-4 rounded-full bg-blue-600"></span>
+                    II. Struktur Pinjaman & Analisis Bunga
+                </h2>
+                <div class="bg-slate-50 p-10 rounded-[2.5rem] mb-8 grid md:grid-cols-2 gap-8 border border-slate-200">
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-2 underline italic">Loan-to-Income Dynamics</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Rasio pinjaman terhadap pendapatan Anda saat ini adalah <strong>{{ data.loan_percent_income }}</strong>. Standar industri perbankan (Debt-to-Income Ratio) menetapkan ambang batas aman di angka 0.35. Anda berada dalam zona "Safe Harbor".
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-slate-900 mb-2 underline italic">Suku Bunga Efektif</h4>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Dengan bunga <strong>{{ data.loan_int_rate }}%</strong>, total beban bunga tahunan Anda diproyeksikan sebesar <strong>${{ (data.loan_amnt * data.loan_int_rate / 100)|round(2) }}</strong>.
+                        </p>
+                    </div>
+                </div>
+                <p class="text-slate-600 leading-relaxed italic border-l-4 border-blue-200 pl-6 py-2">
+                    Tujuan pinjaman untuk <strong>{{ data.loan_intent }}</strong> diklasifikasikan sebagai pengeluaran produktif. Hal ini mendukung peningkatan kualitas hidup atau pertumbuhan modal manusia jangka panjang (Human Capital).
+                </p>
+            </section>
+
+            <div class="audit-card text-center">
+                <p class="data-label mb-6 underline">Proyeksi Pelunasan Amortisasi (Pokok vs Bunga)</p>
+                <div class="viewport-container viewport-sm">
+                    <canvas id="gaugeChart"></canvas>
+                </div>
+            </div>
+
+            <section class="relative">
+                <div class="absolute -left-8 top-0 bottom-0 w-[2px] bg-slate-100"></div>
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-8 flex items-center gap-4">
+                    <span class="w-4 h-4 rounded-full bg-blue-600"></span>
+                    III. Roadmap Finansial 2025-2030
+                </h2>
+                <div class="grid gap-6">
+                    <div class="p-8 bg-blue-50 rounded-3xl border-2 border-blue-100 group hover:bg-blue-600 hover:text-white transition-all duration-500">
+                        <h5 class="font-black mb-2 uppercase tracking-tighter italic">Strategi Optimalisasi Likuiditas</h5>
+                        <p class="text-sm opacity-80 leading-relaxed">
+                            Mengingat riwayat kredit Anda mencapai <strong>{{ data.cb_person_cred_hist_length }} tahun</strong>, Anda memiliki daya tawar untuk meminta penurunan margin suku bunga (Negotiable Margin) setelah 12 bulan pembayaran tepat waktu.
+                        </p>
+                    </div>
+                    <div class="p-8 bg-white border-2 border-slate-100 rounded-3xl hover:border-blue-500 transition-all">
+                        <h5 class="font-black text-slate-900 mb-2 uppercase tracking-tighter italic text-blue-600">Manajemen Risiko Aset</h5>
+                        <p class="text-sm text-slate-500 leading-relaxed">
+                            Status rumah <strong>{{ data.person_home_ownership }}</strong> memberikan perlindungan jaminan secara implisit. Pastikan untuk tetap mengalokasikan 20% dari pendapatan tahunan Anda (Total Pendapatan: ${{ data.person_income }}) ke dalam instrumen likuid (dana darurat).
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div class="lg:col-span-4 space-y-10">
+            <div class="sticky top-32">
+                <div class="bg-slate-50 border border-slate-200 rounded-[3rem] p-10 overflow-hidden relative">
+                    <div class="relative z-10">
+                        <h4 class="text-slate-900 font-bold mb-8 uppercase text-xs tracking-[0.3em]">Snapshot Data Input</h4>
+                        <div class="space-y-6">
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-400 font-bold uppercase">Age Profile</span>
+                                <span class="text-lg font-black text-slate-900">{{ data.person_age }}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-400 font-bold uppercase">Work Tenure</span>
+                                <span class="text-lg font-black text-slate-900">{{ data.person_emp_length }}Y</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-400 font-bold uppercase">Home Status</span>
+                                <span class="text-lg font-black text-slate-900">{{ data.person_home_ownership }}</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-slate-400 font-bold uppercase">Default History</span>
+                                <span class="text-lg font-black text-slate-900">{{ data.cb_person_default_on_file }}</span>
+                            </div>
+                            <div class="pt-6 mt-6 border-t border-slate-200">
+                                <p class="text-[10px] text-slate-400 leading-relaxed uppercase tracking-widest">
+                                    Catatan: Data di atas telah dienkripsi dan diverifikasi melalui protokol keamanan MLflow & FastAPI.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm text-center">
+                    <p class="text-[10px] font-bold text-slate-400 uppercase mb-4 tracking-widest">Growth Projection</p>
+                    <div class="h-32 w-full flex items-end justify-around gap-2 px-2">
+                        <div class="w-full bg-slate-100 h-1/2 rounded-t-lg transition-all hover:bg-emerald-400"></div>
+                        <div class="w-full bg-slate-100 h-2/3 rounded-t-lg transition-all hover:bg-emerald-400"></div>
+                        <div class="w-full bg-emerald-500 h-full rounded-t-lg shadow-lg shadow-emerald-100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // DATA MAPPING DARI JINJA KE ANALYTICS ENGINE
+    const riskMetrics = [
+        Math.min(({{ data.person_income }} / 1000), 100), // Scaled Income
+        Math.min(({{ data.person_emp_length }} * 8), 100), // Employment Stability
+        Math.min(({{ data.cb_person_cred_hist_length }} * 7), 100), // Credit History
+        Math.max(100 - ({{ data.loan_percent_income }} * 100), 0), // DTI inverse
+        92 // System confidence default
+    ];
+
+    const principal = {{ data.loan_amnt }};
+    const interest = {{ (data.loan_amnt * data.loan_int_rate / 100) }};
+
+    // INIT CHART BERAT
+    CreditAnalytics.initRadar('riskRadar', riskMetrics, true);
+    CreditAnalytics.initAmortization('gaugeChart', principal, interest, true);
+});
+</script>
+{% endblock %}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}CreditRisk AI{% endblock %}</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/main.css') }}">
+    
+    <style>
+        :root { font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { -webkit-font-smoothing: antialiased; }
+        /* Fix for Tailwind/Chart interaction */
+        canvas { max-width: 100% !important; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 selection:bg-blue-100">
+    
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="/" class="text-2xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 tracking-tight">
+                CreditRisk<span class="text-slate-900">AI</span>
+            </a>
+            <div class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
+                <a href="/" class="hover:text-blue-600 transition-colors">Home</a>
+                <a href="/predict" class="hover:text-blue-600 transition-colors">Analyze</a>
+                <a href="/about" class="hover:text-blue-600 transition-colors">About Us</a>
+                <a href="/predict" class="px-5 py-2.5 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition shadow-lg shadow-blue-200">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-20 min-h-screen">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="bg-white border-t border-slate-100 py-12">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-slate-400 text-sm font-medium">
+                © 2025 CreditRisk AI System. All Right Reserved
+            </div>
+            <div class="flex gap-6 text-xs font-bold uppercase tracking-widest text-slate-400">
+                <span class="flex items-center gap-2"><span class="w-2 h-2 bg-emerald-500 rounded-full"></span> System Online</span>
+                <span>Audit Ready</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', path='/js/main.js') }}"></script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>
