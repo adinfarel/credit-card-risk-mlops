@@ -6,10 +6,17 @@ __pycache__/
 *.py[cod]
 
 logs/
-!artifacts/data/*.dvc
-artifacts/models/*.joblib
+artifacts/**/*
+!artifacts/models/model.joblib
+!artifacts/models/preprocessor.joblib
+artifacts/models/LightGBM_model.joblib
+artifacts/models/XGBoost_model.joblib
+artifacts/models/LogisticRegression_model.joblib
 
 mlruns/
 mlflow.db
 
 .DS_Store
+
+*.egg-info/
+.pytest_cache/

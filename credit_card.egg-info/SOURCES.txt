@@ -1,6 +1,0 @@
-setup.py
-credit_card.egg-info/PKG-INFO
-credit_card.egg-info/SOURCES.txt
-credit_card.egg-info/dependency_links.txt
-credit_card.egg-info/requires.txt
-credit_card.egg-info/top_level.txt
