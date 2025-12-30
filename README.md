@@ -25,3 +25,40 @@ A production-grade Machine Learning system designed to predict credit card defau
 ├── app.py               # FastAPI main application
 ├── docker-compose.yaml  # Multi-container orchestration
 └── prometheus.yml       # Monitoring configuration
+```
+## 🚦 Getting Started
+
+Copy and paste the following commands to deploy the system:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/adinfarel/credit-card-risk-mlops.git && cd your-repo-name
+
+# 2. Build and start the services (API & Monitoring)
+# This will handle the environment setup and model loading
+docker-compose up --build -d
+
+# 3. Access the services:
+# - Web UI & Prediction: http://localhost:8000
+# - API Documentation: http://localhost:8000/docs
+# - Performance Monitoring: http://localhost:9090
+```
+
+## 📊 Monitoring
+
+The system exposes real-time metrics for Prometheus to track:
+* **Prediction Volume: Monitor the number of credit risk assessments processed.
+* **Inference Latency: Track how long the model takes to return a prediction.
+* **System Health: Ensure the FastAPI container is running optimally.
+
+** 🛠 Manual Execution (Optional)
+If you prefer to run the system without Docker for debugging:
+```bash
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the API
+python app.py
+
+
+
